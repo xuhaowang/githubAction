@@ -41,10 +41,6 @@
 
       
 - block:
-    # - name: Create namespace
-    #   shell: kubectl create ns mysql-operator
-    #   args:
-    #     executable: /bin/bash
       
     - name: Deploy the application to the cluster.
       shell: helm install {{ github_workspace }}/{{ chart_path }} --name {{ name.stdout }}
