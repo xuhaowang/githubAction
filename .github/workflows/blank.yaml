@@ -13,6 +13,7 @@ jobs:
     - name: Testing
       run: |
         export KUBECONFIG="$(kind get kubeconfig-path)"
+        echo $KUBECONFIG
         kubectl cluster-info
         kubectl get pods -n kube-system
     
