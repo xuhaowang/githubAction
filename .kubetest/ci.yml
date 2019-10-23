@@ -51,6 +51,11 @@
             app_ns: default
             app_label: "'app=kubedb'"
             deploy_type: deployment
+            liveness_label: ""
+            liveness_namespace: ""
+            setup_script: ""
+            check_script: ""
+            cleanup_script: ""
 
 
             
