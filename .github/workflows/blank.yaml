@@ -19,6 +19,7 @@ jobs:
     
     - name: Run ansible-playbook
       run: |
+        export KUBECONFIG="$(kind get kubeconfig-path)"
         echo $KUBECONFIG
         cd $GITHUB_WORKSPACE
         ansible-playbook -v test.yml
