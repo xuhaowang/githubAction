@@ -8,28 +8,33 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    # - uses: actions/checkout@v1
+    - uses: actions/checkout@v1
 
-    - name: Hello world action step
-      uses: xuhaowang/githubActionJS@master
-      id: hello
-      with:
-        who-to-greet: 'World blablablabla'
+    # - name: Hello world action step
+    #   uses: xuhaowang/githubActionJS@master
+    #   id: hello
+    #   with:
+    #     who-to-greet: 'World blablablabla'
       
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
-    # - uses: engineerd/setup-kind@v0.1.0
-    # - name: Testing
-    #   run: |
-    #     export KUBECONFIG="$(kind get kubeconfig-path)"
-    #     echo $KUBECONFIG
-    #     kubectl cluster-info
-    #     kubectl get pods -n kube-system
+    # - name: Get the output time
+    #   run: echo "The time was ${{ steps.hello.outputs.time }}"
+
+
+    - uses: engineerd/setup-kind@v0.1.0
+    - name: Testing
+      run: |
+        export KUBECONFIG="$(kind get kubeconfig-path)"
+        echo $KUBECONFIG
+        kubectl cluster-info
+        kubectl get pods -n kube-system
     
-    # - name: Run ansible-playbook
-    #   run: |
-    #     export KUBECONFIG="$(kind get kubeconfig-path)"
-    #     echo $KUBECONFIG
-    #     cd $GITHUB_WORKSPACE
-    #     ansible-playbook -v test.yml
+    - name: Run ansible-playbook
+      run: |
+        export KUBECONFIG="$(kind get kubeconfig-path)"
+        echo $KUBECONFIG
+        cd $GITHUB_WORKSPACE
+        mkdir /etc/ansible/ /ansible
+        echo "[local]" >> /etc/ansible/hosts
+        echo "127.0.0.1" >> /etc/ansible/hosts
+        ansible-playbook -v test.yml
     

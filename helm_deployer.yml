@@ -24,8 +24,11 @@
     
     - name: Authorization the tiller to deploy application
       shell: | 
-        kubectl create serviceaccount --namespace kube-system tiller 
-        kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+        kubectl create clusterrolebinding permissive-binding \
+          --clusterrole=cluster-admin \
+          --user=admin \
+          --user=kubelet \
+          --group=system:serviceaccounts
       args:
         executable: /bin/bash
     
