@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+
+
+  tasks:
+    - block:
+        - name: Test include
+          include_tasks: ./helm_deployer.yml
+          vars:
+            action: deploy
+            chart_path: charts/kubedb-amd64

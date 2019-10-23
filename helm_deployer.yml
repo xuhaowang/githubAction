@@ -1,0 +1,42 @@
+---
+- block:
+    - name: Get github workspace
+      set_fact:
+        github_workspace: "{{ lookup('env','GITHUB_WORKSPACE') }}"
+    - name: Get the chart name
+      shell: echo $(basename {{ chart_path }} )
+      args:
+        executable: /bin/bash
+      register: name
+    
+    
+- block:
+    - name: Deploy the application to the cluster.
+      shell: helm install {{ github_workspace }} / {{ chart_path }} --name {{ name.stdout }}
+      args:
+        executable: /bin/bash
+        
+        
+    - name: Check if the application has been deployed
+      shell: helm list
+      args:
+        executable: /bin/bash
+    
+    - name : Wait for a while
+      shell: sleep 100s
+      args:
+        executable: /bin/bash
+
+      
+  when: action == "deploy"
+    
+    
+- block:
+    - name: Delete the deplyed application
+      shell: helm del --purge {{ name.stdout }}
+      args:
+        executable: /bin/bash
+  when: action == "delete"
+        
+    
+    
