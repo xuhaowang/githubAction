@@ -1,4 +1,0 @@
-img_prefix: registry.sensetime.com/diamond
-sp_name: mysql
-broker_name: mysql-service-broker
-namespace: kube-system

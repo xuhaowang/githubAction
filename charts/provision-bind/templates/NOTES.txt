@@ -1,4 +1,0 @@
-01. Check the serviceinstance is ready:
-  kubectl get serviceinstance {{ .Values.serviceinstance.name }} --namespace {{ .Values.serviceinstance.namespace }}
-02. Check the servicebinding is ready:
-  kubectl get servicebindings {{ .Values.servicebinding.name }} --namespace {{ .Values.servicebinding.namespace }}

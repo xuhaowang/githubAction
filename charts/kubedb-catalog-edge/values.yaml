@@ -1,4 +1,0 @@
-dockerRegistry: "registry.sensetime.com/diamond/service-providers/mysql"
-catalog:
-  mysql: true
-serviceAccount: kubedb

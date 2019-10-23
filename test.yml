@@ -9,4 +9,4 @@
           include_tasks: ./helm_deployer.yml
           vars:
             action: deploy
-            chart_path: charts/kubedb-amd64
+            chart_path: charts/mysql-operator
