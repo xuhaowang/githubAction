@@ -38,7 +38,7 @@
             chart_path: charts/mysql-operator
         
         - name: Get the deployer type
-          shell: >
+          shell: |
             kubectl get pods --all-namespaces
             kubectl get deployment --all-namespaces
             kubectl get statefulset --all-namespaces
