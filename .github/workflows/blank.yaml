@@ -9,18 +9,27 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - uses: engineerd/setup-kind@v0.1.0
-    - name: Testing
-      run: |
-        export KUBECONFIG="$(kind get kubeconfig-path)"
-        echo $KUBECONFIG
-        kubectl cluster-info
-        kubectl get pods -n kube-system
+
+    - name: Hello world action step
+      uses: xuhaowang/githubActionJS@master
+      id: hello
+      with:
+        who-to-greet: 'Mona the Octocat'
+      
+    - name: Get the output time
+      run: echo "The time was ${{ steps.hello.outputs.time }}"
+    # - uses: engineerd/setup-kind@v0.1.0
+    # - name: Testing
+    #   run: |
+    #     export KUBECONFIG="$(kind get kubeconfig-path)"
+    #     echo $KUBECONFIG
+    #     kubectl cluster-info
+    #     kubectl get pods -n kube-system
     
-    - name: Run ansible-playbook
-      run: |
-        export KUBECONFIG="$(kind get kubeconfig-path)"
-        echo $KUBECONFIG
-        cd $GITHUB_WORKSPACE
-        ansible-playbook -v test.yml
+    # - name: Run ansible-playbook
+    #   run: |
+    #     export KUBECONFIG="$(kind get kubeconfig-path)"
+    #     echo $KUBECONFIG
+    #     cd $GITHUB_WORKSPACE
+    #     ansible-playbook -v test.yml
     
