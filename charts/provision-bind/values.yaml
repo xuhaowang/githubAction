@@ -1,0 +1,25 @@
+# Default values for provision-bind.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+serviceinstance:
+  name: mysqldb
+  
+
+serviceclass: mysql
+serviceplan: mysql
+mysqlversion: "8.0-v1"
+terminationPolicy: WipeOut
+storageType: Durable
+storage:
+  accessModes: ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+servicebinding:
+  name: mysqldb
+
+secretName: mysqldb
+
+job:
+   serviceAccountName: default

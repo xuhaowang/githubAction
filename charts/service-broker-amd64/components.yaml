@@ -1,0 +1,23 @@
+apiVersion: lcm.diamond.sensetime.com/v1
+kind: Component
+metadata:
+  name: mysql-service-broker    # helm chart's name
+  namespace: kubedb
+spec:
+  constraints:
+  - key: tags
+    value: k8s-worker
+  driver: helm
+  name: mysql-service-broker
+  params:
+  - name: broker.tag
+    value: latest
+  - name: cleaner.tag
+    value: v1.12
+  series: xenial
+  services:
+  - name: mysql-service-broker
+    replicas: 1
+    template:
+      image: registry.sensetime.com/diamond/service-providers/mysql/service-broker:latest
+      name: broker
