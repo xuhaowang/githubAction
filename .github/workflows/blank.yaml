@@ -16,9 +16,7 @@ jobs:
       - name: Get app deploer type
         run: |
           export KUBECONFIG="$(kind get kubeconfig-path)"
-          kubectl get pods --all-namespaces
-          kubectl get deployment --all-namespaces
-          kubectl get statefulset --all-namespaces
+          kubectl get deployment kubedb -o yaml
 
 
     # - uses: engineerd/setup-kind@v0.1.0
