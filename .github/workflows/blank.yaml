@@ -9,9 +9,15 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
+    - uses: engineerd/setup-kind@v0.1.0
+    - name: Testing
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        export KUBECONFIG="$(kind get kubeconfig-path)"
+        kubectl cluster-info
+        kubectl get pods -n kube-system
+    
+    - name: Run ansible-playbook
+      run: |
+        cd $GITHUB_WORKSPACE
+        ansible-playbook -v test.yml
+    

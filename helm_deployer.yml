@@ -9,21 +9,32 @@
         executable: /bin/bash
       register: name
     
-    
+    - name: Install tiller
+      shell: helm init
+      args:
+        executable: /bin/bash
+      
+    - name: Wait until tiller is installed
+      shell: helm version
+      register: status
+      until: "'Server' in status.stdout"
+      delay: 5
+      retries: 120
+
+      
 - block:
     - name: Deploy the application to the cluster.
       shell: helm install {{ github_workspace }} / {{ chart_path }} --name {{ name.stdout }}
       args:
         executable: /bin/bash
-        
-        
+         
     - name: Check if the application has been deployed
       shell: helm list
       args:
         executable: /bin/bash
     
-    - name : Wait for a while
-      shell: sleep 100s
+    - name: Get all pods
+      shell: kubectl get pods --all-namespaces
       args:
         executable: /bin/bash
 
