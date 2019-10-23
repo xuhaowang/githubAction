@@ -37,13 +37,13 @@
             action: deploy
             chart_path: charts/mysql-operator
         
-        - name: Get the deployer type
-          shell: |
-            kubectl get pods --all-namespaces
-            kubectl get deployment --all-namespaces
-            kubectl get statefulset --all-namespaces
-          args:
-            executable: /bin/bash
+        # - name: Get the deployer type
+        #   shell: |
+        #     kubectl get pods --all-namespaces
+        #     kubectl get deployment --all-namespaces
+        #     kubectl get statefulset --all-namespaces
+        #   args:
+        #     executable: /bin/bash
         
         # - name: Test Pod Faliure
         #   include_tasks: ../Kube-Test/experiments/app_pod_failure.yml
