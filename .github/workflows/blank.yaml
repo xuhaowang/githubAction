@@ -22,7 +22,7 @@ jobs:
       uses: xuhaowang/githubActionJS@master
       id: hello
       with:
-        who-to-greet: 'World blablablabla'
+        who-to-greet: 'World blablablablabla'
       
     - name: Get the output time
       run: echo "The time was ${{ steps.hello.outputs.time }}"
