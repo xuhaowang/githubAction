@@ -24,7 +24,7 @@
       
 - block:
     - name: Deploy the application to the cluster.
-      shell: helm install {{ github_workspace }}/{{ chart_path }} --name {{ name.stdout }}
+      shell: helm install {{ github_workspace }}/{{ chart_path }} --name {{ name.stdout }} --namespace kube-system
       args:
         executable: /bin/bash
          
