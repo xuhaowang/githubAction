@@ -18,6 +18,7 @@ jobs:
     
     - name: Run ansible-playbook
       run: |
+        echo $KUBECONFIG
         cd $GITHUB_WORKSPACE
         ansible-playbook -v test.yml
     
