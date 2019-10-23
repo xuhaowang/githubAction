@@ -33,8 +33,8 @@ jobs:
         export KUBECONFIG="$(kind get kubeconfig-path)"
         echo $KUBECONFIG
         cd $GITHUB_WORKSPACE
-        sudo mkdir /ansible
-        sudo echo "[local]" >> /etc/ansible/hosts
-        sudo echo "127.0.0.1" >> /etc/ansible/hosts
+        # sudo mkdir /ansible
+        # sudo echo "[local]" >> /etc/ansible/hosts
+        # sudo echo "127.0.0.1" >> /etc/ansible/hosts
         ansible-playbook -v test.yml
     
