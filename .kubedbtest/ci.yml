@@ -1,0 +1,51 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars_files:
+    - ../Kube-Test/env.yml
+
+  vars:
+    CHART_PATH: "./charts/"
+
+  environment:
+    KUBECONFIG: "{{ kube_config }}"
+
+  tasks:
+    - block:
+
+        - name: Test KinD
+          shell: >
+            kubectl get pods --all-namespaces
+          args:
+            executable: /bin/bash
+
+        - name: Test
+          shell: >
+            echo "hello action!"
+          args:
+            executable: /bin/bash
+        
+        - name: Create new ns
+          shell: kubectl create ns mysql-operator
+          args:
+            executable: /bin/bash
+
+        - name: Deploy the app
+          include_tasks: ../Kube-Test/funclib/helm_deployer.yml
+          vars: 
+            action: deploy
+            chart_path: ../../charts/mysql-operator
+        
+        - name: Get the deployer type
+          shell: >
+            kubectl get pods --all-namespaces
+            kubectl get deployment --all-namespaces
+            kubectl get statefulset --all-namespaces
+          args:
+            executable: /bin/bash
+        
+        # - name: Test Pod Faliure
+        #   include_tasks: ../Kube-Test/experiments/app_pod_failure.yml
+          
+            

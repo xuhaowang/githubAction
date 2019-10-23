@@ -46,6 +46,8 @@
       shell: helm install {{ github_workspace }}/{{ chart_path }} --name {{ name.stdout }}
       args:
         executable: /bin/bash
+    
+    
          
     - name: Check if the application has been deployed
       shell: helm list

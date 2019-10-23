@@ -3,29 +3,15 @@ name: CI
 on: [push]
 
 jobs:
-  build:
-
+  test_action:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v1
-
-    # - uses: engineerd/setup-kind@v0.1.0
-    # - name: Testing
-    #   run: |
-    #     export KUBECONFIG="$(kind get kubeconfig-path)"
-    #     echo $KUBECONFIG
-    #     kubectl cluster-info
-    #     kubectl get pods -n kube-system
-
-    - name: Hello world action step
-      uses: xuhaowang/githubActionJS@master
-      id: hello
-      with:
-        who-to-greet: 'World blablablablablabla'
-      
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: KinD (Kubernetes in Docker) Action
+        uses: engineerd/setup-kind@v0.1.0
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Kube Test Action
+        uses: saintube/Kube-Test@master
 
 
     # - uses: engineerd/setup-kind@v0.1.0
