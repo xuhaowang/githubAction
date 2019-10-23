@@ -20,6 +20,11 @@
       until: "'Server' in status.stdout"
       delay: 5
       retries: 120
+    
+    - name: Authorization the tiller to deploy application
+      shell: kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+      args:
+        executable: /bin/bash
 
       
 - block:
