@@ -23,7 +23,9 @@
     
     
     - name: Authorization the tiller to deploy application
-      shell: kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+      shell: | 
+        kubectl create serviceaccount --namespace kube-system tiller 
+        kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
       args:
         executable: /bin/bash
     
