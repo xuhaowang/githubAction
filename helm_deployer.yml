@@ -21,6 +21,13 @@
       delay: 5
       retries: 120
     
+    - name: Wait until tiller is installed
+      shell: kubectl get pod -n kube-system | grep tiller-deploy 
+      register: status
+      until: "'0\\1' in status.stdout"
+      delay: 5
+      retries: 120
+    
     - name: Authorization the tiller to deploy application
       shell: kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
       args:
