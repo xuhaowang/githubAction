@@ -45,7 +45,14 @@
         #   args:
         #     executable: /bin/bash
         
-        # - name: Test Pod Faliure
-        #   include_tasks: ../Kube-Test/experiments/app_pod_failure.yml
+        - name: Test Pod Faliure
+          include_tasks: ../Kube-Test/experiments/app_pod_failure.yml
+          vars:
+            app_ns: default
+            app_label: "'app=kubedb'"
+            deploy_type: deployment
+
+
+            
           
             
