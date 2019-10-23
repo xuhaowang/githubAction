@@ -25,11 +25,21 @@
       shell: kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
       args:
         executable: /bin/bash
+    
+    - name: Get tiller pod
+      shell: kubectl get pod -n kube-system
+      args:
+        executable: /bin/bash
 
       
 - block:
+    - name: Create namespace
+      shell: kubectl create ns mysql-operator
+      args:
+        executable: /bin/bash
+      
     - name: Deploy the application to the cluster.
-      shell: helm install {{ github_workspace }}/{{ chart_path }} --name {{ name.stdout }} --namespace kube-system
+      shell: helm install {{ github_workspace }}/{{ chart_path }} --name {{ name.stdout }}
       args:
         executable: /bin/bash
          
