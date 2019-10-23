@@ -35,7 +35,7 @@
           include_tasks: ../Kube-Test/funclib/helm_deployer.yml
           vars: 
             action: deploy
-            chart_path: ../../charts/mysql-operator
+            chart_path: charts/mysql-operator
         
         - name: Get the deployer type
           shell: >
