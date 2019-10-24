@@ -50,7 +50,7 @@
           vars:
             app_ns: default
             app_label: "'app=kubedb'"
-            deploy_type: deployment
+            deploy_type: 'deployment'
             test_name: app-pod-failure3
             liveness_label: ""
             liveness_namespace: ""
