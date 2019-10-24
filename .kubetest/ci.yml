@@ -46,7 +46,7 @@
         #     executable: /bin/bash
         
         - name: Test Pod Faliure
-          include_tasks: ../Kube-Test/experiments/app_pod_failure.yaml
+          include_tasks: ../Kube-Test/experiments/pod-delete.yaml
           vars:
             app_ns: "default"
             app_label: "'app=kubedb'"
