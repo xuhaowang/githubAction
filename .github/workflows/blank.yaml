@@ -11,12 +11,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: Kube Test Action
-        uses: saintube/Kube-Test@master
+        uses: saintube/Kube-Test@output
       
       - name: Get app deploer type
         run: |
           export KUBECONFIG="$(kind get kubeconfig-path)"
-          kubectl get deployment kubedb -o yaml
+          kubectl get deployment
+          kubectl get pod 
 
 
     # - uses: engineerd/setup-kind@v0.1.0
