@@ -34,7 +34,7 @@
         - name: Deploy the app
           include_tasks: ../Kube-Test/funclib/helm_deployer.yaml
           vars: 
-            action: deploy
+            action: "deploy"
             chart_path: charts/kubedb
         
         # - name: Get the deployer type
@@ -48,10 +48,10 @@
         - name: Test Pod Faliure
           include_tasks: ../Kube-Test/experiments/app_pod_failure.yaml
           vars:
-            app_ns: default
+            app_ns: "default"
             app_label: "'app=kubedb'"
-            deploy_type: 'deployment'
-            test_name: app-pod-failure3
+            deploy_type: "deployment"
+            test_name: "app-pod-failure3"
             liveness_label: ""
             liveness_namespace: ""
             setup_script: ""
