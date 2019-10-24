@@ -51,7 +51,7 @@
             app_ns: "default"
             app_label: "'app=kubedb'"
             deploy_type: "deployment"
-            test_name: "pod-delete2"
+            test_name: "pod-delete"
             c_duration: "15"
             c_interval: "5"
             c_force: "true"
