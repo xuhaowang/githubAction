@@ -32,7 +32,7 @@
         #     executable: /bin/bash
 
         - name: Deploy the app
-          include_tasks: ../Kube-Test/funclib/helm_deployer.yml
+          include_tasks: ../Kube-Test/funclib/helm_deployer.yaml
           vars: 
             action: deploy
             chart_path: charts/kubedb
@@ -46,7 +46,7 @@
         #     executable: /bin/bash
         
         - name: Test Pod Faliure
-          include_tasks: ../Kube-Test/experiments/app_pod_failure.yml
+          include_tasks: ../Kube-Test/experiments/app_pod_failure.yaml
           vars:
             app_ns: default
             app_label: "'app=kubedb'"
