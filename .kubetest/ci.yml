@@ -26,10 +26,10 @@
           args:
             executable: /bin/bash
         
-        # - name: Create new ns
-        #   shell: kubectl create ns mysql-operator
-        #   args:
-        #     executable: /bin/bash
+        - name: Create new ns
+          shell: kubectl create ns mysql-operator
+          args:
+            executable: /bin/bash
 
         - name: Deploy the app
           include_tasks: ../Kube-Test/funclib/helm_deployer.yaml
