@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: Kube Test Action
-        uses: saintube/Kube-Test@output
+        uses: saintube/Kube-Test@master
       
       - name: Get app deploer type
         run: |
