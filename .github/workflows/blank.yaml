@@ -16,9 +16,10 @@ jobs:
       - name: Get app deploer type
         run: |
           export KUBECONFIG="$(kind get kubeconfig-path)"
-          kubectl get deployment -o yaml
-          kubectl get pod -o yaml
+          kubectl get deployment 
+          kubectl get pod 
           kubectl get statefulset
+          ls $GITHUB_WORKSPACE/.kubetest/
 
 
     # - uses: engineerd/setup-kind@v0.1.0
