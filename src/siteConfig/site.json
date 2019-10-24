@@ -1,0 +1,13 @@
+{
+  "avatar": "./avatar.jpeg",
+  "title": "Kube Test Action",
+  "subTitle": "Dashboard",
+  "intro": "Build History",
+  "social": [
+    {
+      "text": "SenseTime",
+      "link": "https://www.sensetime.com"
+    }
+  ],
+  "copyright": "© SenseTime | 2019 Kube Test Actions"
+}
