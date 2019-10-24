@@ -16,8 +16,8 @@ jobs:
       - name: Get app deploer type
         run: |
           export KUBECONFIG="$(kind get kubeconfig-path)"
-          kubectl get deployment
-          kubectl get pod 
+          kubectl get deployment -o yaml
+          kubectl get pod -o yaml
           kubectl get statefulset
 
 
