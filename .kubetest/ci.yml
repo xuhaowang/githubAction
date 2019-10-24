@@ -49,7 +49,7 @@
           include_tasks: ../Kube-Test/experiments/pod-delete.yaml
           vars:
             app_ns: "default"
-            app_label: "'app=kubedb'"
+            app_label: "app=kubedb"
             deploy_type: "deployment"
             test_name: "pod-delete"
             c_duration: "15"
