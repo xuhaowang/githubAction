@@ -1,4 +1,4 @@
-const siteInfo = require('./datashboard.json');
+const siteInfo = require('./dashboard.json');
 
 // const logo = /^http(s)?/gi.test(siteInfo.avatar)
 //   ? siteInfo.avatar
