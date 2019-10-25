@@ -20,7 +20,7 @@ jobs:
           kubectl get pod 
           kubectl get statefulset
           pwd
-          ls $GITHUB_WORKSPACE/.kubetest/
+          ls 
       
       - name: Build and Deploy
         uses: JamesIves/github-pages-deploy-action@master
