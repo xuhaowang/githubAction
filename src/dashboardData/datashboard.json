@@ -1,0 +1,18 @@
+{
+  "cicounts": "8 times",
+  "successes": "23 cases",
+  "errors": "17 cases",
+  "timecost": "19.2 mins",
+  "building_history": {
+    "labels": [
+      "Last 8", "Last 7", "Last 6", "Last 5", "Last 4", "Last 3", "Last 2", "Latest"
+    ],
+    "series": [
+      [20, 20, 40, 40, 60, 80, 100, 100]
+    ]
+  },
+  "dataPie": {
+    "labels": ["57.5%", "42.5%"],
+    "series": [57.5, 42.5]
+  }
+}

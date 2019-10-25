@@ -1,8 +1,8 @@
 {
-  "name": "githubAction",
+  "name": "Kube-Test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://xuhaowang.github.io/githubAction",
+  "homepage": "https://peipeilvcm.github.io/Kube-Test",
   "dependencies": {
     "bootstrap": "3.3.7",
     "chartist": "0.10.1",

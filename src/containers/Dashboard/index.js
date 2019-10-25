@@ -10,13 +10,16 @@ import Header from 'components/Header';
 import siteConfig from 'siteConfig';
 import './style.css';
 import GoBack from 'components/GoBack';
+import dashboardData from 'dashboardData';
 
 import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
 import { Card } from "components/Card/Card.jsx";
 import { StatsCard } from "components/StatsCard/StatsCard.jsx";
+
+import PropTypes from 'prop-types';
+
 import {
-  dataPie,
   legendPie,
   dataSales,
   optionsSales,
@@ -30,6 +33,11 @@ import {
 
 
 export default class Dashboard extends Component {
+
+  // static propTypes = {
+  //   data: PropTypes.object.isRequired,
+  // };
+
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json["names"].length; i++) {
@@ -52,6 +60,15 @@ export default class Dashboard extends Component {
 
 
   render() {
+
+    const { 
+      cicounts,
+      successes,
+      errors,
+      timecost,
+      building_history,
+      dataPie,
+    } = dashboardData;
 
     const navList = [
       {
@@ -84,7 +101,7 @@ export default class Dashboard extends Component {
                   <StatsCard
                     bigIcon={<i className="pe-7s-server text-warning" />}
                     statsText="CI count"
-                    statsValue="8 times"
+                    statsValue={cicounts}
                     statsIcon={<i className="fa fa-refresh" />}
                     statsIconText="Updated now"
                   />
@@ -93,7 +110,7 @@ export default class Dashboard extends Component {
                   <StatsCard
                     bigIcon={<i className="pe-7s-wallet text-success" />}
                     statsText="Successes"
-                    statsValue="23 cases"
+                    statsValue={successes}
                     statsIcon={<i className="fa fa-calendar-o" />}
                     statsIconText="Last day"
                   />
@@ -102,7 +119,7 @@ export default class Dashboard extends Component {
                   <StatsCard
                     bigIcon={<i className="pe-7s-graph1 text-danger" />}
                     statsText="Errors"
-                    statsValue="17 cases"
+                    statsValue={errors}
                     statsIcon={<i className="fa fa-clock-o" />}
                     statsIconText="In the last hour"
                   />
@@ -111,7 +128,7 @@ export default class Dashboard extends Component {
                   <StatsCard
                     bigIcon={<i className="fa fa-clock-o text-info" />}
                     statsText="Time cost"
-                    statsValue="19.2 mins"
+                    statsValue={timecost}
                     statsIcon={<i className="fa fa-refresh" />}
                     statsIconText="Updated now"
                   />
@@ -128,7 +145,7 @@ export default class Dashboard extends Component {
                     content={
                       <div className="ct-chart">
                         <ChartistGraph
-                          data={dataSales}
+                          data={building_history}
                           type="Line"
                           options={optionsSales}
                           responsiveOptions={responsiveSales}

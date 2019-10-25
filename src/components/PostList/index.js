@@ -38,56 +38,56 @@ export class PostList extends Component {
   render() {
     let postItems = this.props.data.map((p, i) =>
 
-        <Col md={12}>
-        <Card
-          title={
-            <Link to={p.url}>
-              <h3 className="post-title" title={p.title}>
-                {p.title}
-              </h3>
-            </Link>
-          }
-          category={
-            <article className="post-item">
-              <div className="tag-bar">
-              {p.tag.map(t =>
-                <Link to={`/tag/${t}`} key={`post_tag_${randomId()}`}>
-                  <p>
-                    {t}
-                  </p>
-                </Link>
-              )}
-              </div>
-            </article>
-          }
-          stats={p.time}
-          // content={
-            
-          // }
-        />
-      </Col>
-      // <article className="post-item" key={`post-${p.time}-${p.title}`}>
-      //   {/* <Link className="thumb" to={p.url}>
-      //     <img src={this._loadThumb(p.thumb, i)} alt="" />
-      //   </Link> */}
-      //   <Link to={p.url}>
-      //     <h3 className="post-title" title={p.title}>
-      //       {p.title}
-      //     </h3>
-      //   </Link>
-      //   <div className="tag-bar">
-      //     {p.tag.map(t =>
-      //       <Link to={`/tag/${t}`} key={`post_tag_${randomId()}`}>
-      //         <p>
-      //           {t}
-      //         </p>
+      //   <Col md={12}>
+      //   <Card
+      //     title={
+      //       <Link to={p.url}>
+      //         <h3 className="post-title" title={p.title}>
+      //           {p.title}
+      //         </h3>
       //       </Link>
-      //     )}
-      //   </div>
-      //   <p className="time">
-      //     {p.time}
-      //   </p>
-      // </article>
+      //     }
+      //     category={
+      //       <article className="post-item">
+      //         <div className="tag-bar">
+      //         {p.tag.map(t =>
+      //           <Link to={`/tag/${t}`} key={`post_tag_${randomId()}`}>
+      //             <p>
+      //               {t}
+      //             </p>
+      //           </Link>
+      //         )}
+      //         </div>
+      //       </article>
+      //     }
+      //     stats={p.time}
+      //     // content={
+            
+      //     // }
+      //   />
+      // </Col>
+      <article className="post-item" key={`post-${p.time}-${p.title}`}>
+        {/* <Link className="thumb" to={p.url}>
+          <img src={this._loadThumb(p.thumb, i)} alt="" />
+        </Link> */}
+        <Link to={p.url}>
+          <h3 className="post-title" title={p.title}>
+            {p.title}
+          </h3>
+        </Link>
+        <div className="tag-bar">
+          {p.tag.map(t =>
+            <Link to={`/tag/${t}`} key={`post_tag_${randomId()}`}>
+              <p>
+                {t}
+              </p>
+            </Link>
+          )}
+        </div>
+        <p className="time">
+          {p.time}
+        </p>
+      </article>
     );
 
     const goHome = this.props.goHome ? <GoBack /> : false;
