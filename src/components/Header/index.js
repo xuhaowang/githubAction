@@ -48,7 +48,7 @@ export class Header extends Component {
     const DropDownBtn = (
       <Dropdown overlay={SubNav} key={`nav_top_${randomId()}`}>
         <div className="header-nav-item">
-          更多分类 <Icon type="down" />
+          More Cases <Icon type="down" />
         </div>
       </Dropdown>
     );

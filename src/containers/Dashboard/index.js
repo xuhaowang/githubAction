@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import { bindActionCreators } from 'redux';
-// import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import SideBar from 'components/SideBar';
 // import PostList from 'components/PostList';
 import Header from 'components/Header';
-// import * as DashboardActions from './actions';
+import * as DashboardActions from './actions';
 // import { Button } from 'antd';
 import siteConfig from 'siteConfig';
 import './style.css';
@@ -17,7 +17,7 @@ import { Grid, Row, Col } from "react-bootstrap";
 import { Card } from "components/Card/Card.jsx";
 import { StatsCard } from "components/StatsCard/StatsCard.jsx";
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import {
   legendPie,
@@ -31,12 +31,22 @@ import {
   // legendBar
 } from "variables/Variables.jsx";
 
+const mapStateToProps = ({ dashboard }) => ({ dashboard });
 
-export default class Dashboard extends Component {
+const mapDispatchToProps = dispatch => ({
+  dashboardActions: bindActionCreators(DashboardActions, dispatch),
+});
+
+
+export class Dashboard extends Component {
 
   // static propTypes = {
   //   data: PropTypes.object.isRequired,
   // };
+  static propTypes = {
+    dashboard: PropTypes.object.isRequired,
+    dashboardActions: PropTypes.object.isRequired,
+  };
 
   createLegend(json) {
     var legend = [];
@@ -55,11 +65,16 @@ export default class Dashboard extends Component {
   // }
 
   componentDidMount() {
-
+    this.props.dashboardActions.fetchPostInfo();
   }
 
 
   render() {
+
+    const {
+      postInfo: {postCount, tagInfo},
+      loadMore,
+    } = this.props.dashboard.toJS();
 
     const { 
       cicounts,
@@ -77,9 +92,9 @@ export default class Dashboard extends Component {
       },
       {
         linkTo: '/',
-        tag: `All Build History（12）`,
+        tag: `All Build History (${postCount})`,
       },
-      {"tag":"app-pod-failure","count":1},{"tag":"network-delay","count":1},{"tag":"pod-delete","count":1},
+      ...tagInfo,
     ];
     
 
@@ -187,4 +202,4 @@ export default class Dashboard extends Component {
   }
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

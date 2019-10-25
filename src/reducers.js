@@ -9,6 +9,7 @@ export default asyncReducers =>
     home,
     tagPost,
     article,
+    dashboard,
     routing: routerReducer,
     ...asyncReducers,
   });
