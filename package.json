@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://xuhaowang.github.io/githubAction",
   "dependencies": {
-    "bootstrap": "3.3.7",
+    "bootstrap": "3.4.1",
     "chartist": "0.10.1",
     "node-sass": "4.12.0",
     "react-bootstrap": "0.32.4",
